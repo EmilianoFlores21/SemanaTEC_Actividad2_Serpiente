@@ -1,8 +1,8 @@
 from turtle import *
-import random
+from random import random, randrange, randint, choice
 from freegames import square, vector
 
-food = vector(-180,random.randrange(-18,18)*10)
+food = vector(randrange(-18,18)*10,randrange(-18,18)*10)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
@@ -30,8 +30,8 @@ def move():
     if head == food:
         print('Snake:', len(snake))
         if abs(food.x)<180 and abs(food.x)<180:
-            food.x=random.choice([food.x-10,food.x+10])
-            food.y=random.choice([food.y-10,food.y+10])
+            food.x=choice([food.x-10,food.x+10])
+            food.y=choice([food.y-10,food.y+10])
         else:
             if(food.x>=180):
                 food.x=food.x-10
