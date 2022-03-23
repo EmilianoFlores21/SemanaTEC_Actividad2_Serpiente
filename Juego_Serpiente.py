@@ -1,8 +1,10 @@
 from turtle import *
-from random import random, randrange, randint
+
+from random import random, randrange, randint, choice
+
 from freegames import square, vector
 
-food = vector(0, 0)
+food = vector(randrange(-18,18)*10,randrange(-18,18)*10)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 color= ["black", "yellow", "blue", "green", "purple"]
@@ -30,9 +32,20 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
         
+        if abs(food.x)<180 and abs(food.x)<180:
+            food.x=choice([food.x-10,food.x+10])
+            food.y=choice([food.y-10,food.y+10])
+        else:
+            if(food.x>=180):
+                food.x=food.x-10
+            elif(food.x<=180):
+                food.x=food.x+10
+            if(food.y>=180):
+                food.y=food.y-10
+            elif(food.y<=180):
+                food.y=food.y+10
+
     else:
         snake.pop(0)
 
