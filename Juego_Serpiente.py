@@ -1,11 +1,14 @@
 from turtle import *
+
 from random import random, randrange, randint, choice
+
 from freegames import square, vector
 
 food = vector(randrange(-18,18)*10,randrange(-18,18)*10)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-
+color= ["black", "yellow", "blue", "green", "purple"]
+r = randint(0,4)
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -19,7 +22,7 @@ def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
-
+    global r
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
@@ -29,6 +32,7 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
+        
         if abs(food.x)<180 and abs(food.x)<180:
             food.x=choice([food.x-10,food.x+10])
             food.y=choice([food.y-10,food.y+10])
@@ -47,8 +51,9 @@ def move():
 
     clear()
 
-    for body in snake:
-        square(body.x, body.y, 9, 'black')
+    for body in snake:    
+        
+        square(body.x, body.y, 9, color[r])
 
     square(food.x, food.y, 9, 'green')
     update()
